@@ -1,32 +1,36 @@
-let wordBank = ["Here", "are", "some", "sample", "words"]
-let randomSelection = Math.floor(Math.random() * wordBank.length)
-let wordSelect = wordBank[randomSelection]
-let wordToGuess = "World";
-let goodGuesses = ["o", "r"];
-var inquirer = require('inquirer');
-var prompt = require('prompt');
-console.log(wordSelect);
+var Letter = require("./letter.js");
+
+var Word = function (word) {
+
+    this.buildWord = function (word) {
+        var lettersStore = [];
+        for (var i = 0; i < word.length; i++) {
+            var currentLetter = new Letter(word[i]);
+            lettersStore.push(currentLetter);
+        }
+        return lettersStore;
+    }
+
+    this.chosenWord = word;
+    this.letters = this.renderWord(word);
+
+    this.checkGuess = function (guess) {
+
+        for (var i = 0; i < this.letters.length; i++) {
+            this.letters[i].letterGuess(guess);
+
+        }
+    }
+
+    this.display = function () {
+        var lettersStore = '';
+        for (var i = 0; i < this.letters.length; i++) {
+            lettersStore += this.letters[i].display();
+        }
+        return lettersStore;
+    }
 
 
-// console.log(word);
+}
 
-// function Word(wordParameter) {
-//   this.word = wordParameter.split("");
-  
-//   this.showPlaceholders = function() {
-//     let tmpString = "";
-//     this.word.forEach(element => {
-//       if (goodGuesses.includes(element)) {
-//         tmpString += element + " ";
-//       } else {
-//         tmpString += "_ ";
-//       }
-//     });
-//     console.log(tmpString);
-//     return tmpString;
-//   }
-// }
-
-// let myWord = new Word(wordToGuess);
-// let whatsReturned = myWord.showPlaceholders();
-// console.log("showPlaceholders function returned " + whatsReturned);
+module.exports = Word;
