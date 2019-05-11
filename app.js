@@ -4,7 +4,7 @@ var inquirer = require("inquirer");
 var guesses = 10;
 var points = 0;
 
-var wordsToGuess = ['these', 'are', 'some', 'sample', 'words', 'to test', 'the', 'function'];
+var wordsToGuess = ['Orlando', 'Chicago', 'New Orleans', 'Indianapolis', 'Los Angeles', 'Madrid', 'Paris', 'Berlin'];
 var randomWord;
 var chosenWord;
 

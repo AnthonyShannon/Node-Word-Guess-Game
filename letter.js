@@ -16,7 +16,7 @@ var Letter = function (character) {
         }
 
         else if (this.isLetterGuessed === false) {
-            return ("_");
+            return ("-");
         }
     }
 

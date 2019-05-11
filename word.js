@@ -12,7 +12,7 @@ var Word = function (word) {
     }
 
     this.chosenWord = word;
-    this.letters = this.renderWord(word);
+    this.letters = this.buildWord(word);
 
     this.checkGuess = function (guess) {
 
